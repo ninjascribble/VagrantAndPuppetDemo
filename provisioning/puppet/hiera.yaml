@@ -1,0 +1,8 @@
+---
+:backends:
+  - yaml
+:yaml:
+  :datadir: /var/src/provisioning/puppet/hieradata
+:hierarchy:
+  - "%{::environment}"
+  - common

@@ -1,0 +1,13 @@
+<?php
+  $cfg['PmaAbsoluteUri'] = '<%=@absolute_uri%>';
+  $cfg['blowfish_secret'] = 'ba17c1ec07d65003';
+
+  $i=0;
+
+  <% @servers.each do |server| %>
+  $i++;
+  $cfg['Servers'][$i]['auth_type'] = 'cookie';
+  $cfg['Servers'][$i]['host']      = '<%= server["host"] %>';
+  $cfg['Servers'][$i]['port']      = '<%= server["port"] %>';
+  <% end %>
+?>

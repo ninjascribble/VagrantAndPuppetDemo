@@ -1,0 +1,50 @@
+---
+# Classes required on development servers
+classes:
+  - roles::dbserver
+  - roles::appserver
+  - roles::devserver
+
+filesystem::owner: www-data
+filesystem::group: www-data
+filesystem::src_dir: /var/src/www
+filesystem::www_dir: /var/www
+
+nginx::sendfile: "off"
+nginx::fastcgi_read_timeout: 300
+nginx::config_dir: /etc/nginx/sites-enabled
+
+mysql::hostname: localhost
+mysql::port: 3306
+mysql::username: root
+mysql::password: admin
+mysql::database: vandp
+mysql::table_prefix: Y6bP2
+
+php::memory_limit: 256M
+php::error_reporting: E_ALL
+php::display_errors: "On"
+php::display_startup_errors: "On"
+php::post_max_size: 20M
+php::upload_max_filesize: 20M
+php::max_file_uploads: 20
+php::max_execution_time: 300
+
+fpm::pm::type: ondemand
+fpm::pm::max_children: 5
+fpm::pm::max_requests: 200
+fpm::pm::process_idle_timeout: 10s
+fpm::emergency_restart_threshold: 10
+fpm::emergency_restart_interval: 1m
+fpm::process_control_timeout: 10s
+
+phpmyadmin::port: 8080
+phpmyadmin::root_dir: /var/www/phpmyadmin
+phpmyadmin::access_log_file: /var/log/phpmyadmin.access.log
+phpmyadmin::error_log_file: /var/log/phpmyadmin.error.log
+phpmyadmin::absolute_uri: http://localhost:8080
+phpmyadmin::revision: RELEASE_4_3_12
+phpmyadmin::servers:
+  - desc: local
+    host: 127.0.0.1
+    port: 3306

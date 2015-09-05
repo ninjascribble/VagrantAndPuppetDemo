@@ -1,0 +1,10 @@
+---
+# Classes required on all servers
+classes:
+  - roles::base
+
+server::environment: "%{::environment}"
+server::hostname: "%{::public_domain}"
+server::processorcount: "%{::processorcount}"
+server::memorytotal: "%{::memorytotal}"
+server::path: "%{::path}"
